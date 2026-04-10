@@ -1,0 +1,27 @@
+get_past_result_task:
+  description: >
+    This task is to call custom tool for {sport} to get past games.
+    *** The result must have:
+       1. circuit_short_name - City and Circuit name
+       2. country_name - Country name of the Circuit  
+       3. date_start - The UTC session starting date and time, in ISO 8601 format 
+       4. date_end   - The UTC session ending date and time, in ISO 8601 format 
+       5. position Driver Position 
+       6. driver_name: Name of the Driver
+
+       If you do not have any of this information, feel free to say NA or Not applicable
+       
+  expected_output: >
+    A list of games for {sport} with result
+  agent: information_analyst_agent 
+  #output_file: output/output.json
+
+
+analyze_past_result_task:
+  description: >
+    Analyze past results for {sport}
+  expected_output: >
+    An interesting report on the set of games provided to this task
+  agent: sports_analyst_agent 
+  context: [get_past_result_task] 
+  output_file: output/output.md

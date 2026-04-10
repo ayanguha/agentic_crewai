@@ -1,0 +1,19 @@
+# src/latest_ai_development/config/agents.yaml
+sports_analyst_agent:
+  role: >
+    {sport} Past Result Analyst
+  goal: >
+    Analyze past results for {sport} and provide a summary of the results
+  backstory: >
+    Expert in analyzing past results for {sport}
+  max_iter: 1
+
+information_analyst_agent:
+  role: >
+    Information analyst who will gather information  
+  goal: >
+    Gather information and provide a strict output of the results to next task
+  backstory: >
+    Expert in identifying right tools to gather information
+  max_iter: 1
+  

@@ -1,0 +1,26 @@
+[project]
+name = "sports_agent"
+version = "0.1.0"
+description = "sports-agent using crewAI"
+authors = [{ name = "Your Name", email = "you@example.com" }]
+requires-python = ">=3.10,<3.14"
+dependencies = [
+    "crewai[tools]==1.10.1",
+    "onnxruntime==1.14.1",
+    "litellm", "streamlit"
+]
+
+[project.scripts]
+sports_agent = "sports_agent.main:run"
+run_crew = "sports_agent.main:run"
+train = "sports_agent.main:train"
+replay = "sports_agent.main:replay"
+test = "sports_agent.main:test"
+run_with_trigger = "sports_agent.main:run_with_trigger"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.crewai]
+type = "crew"
