@@ -39,7 +39,7 @@ def get_api_data():
                                 'driver_name' : dn[0]['full_name']
                         }
                         final_result.append(output_dict)
-        print("=================== Tool Response: ========================")
+        print("=================== Tool Response: ==========================")
         print(final_result)
         print("===========================================================")
         return final_result 

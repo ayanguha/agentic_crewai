@@ -14,7 +14,7 @@ get_past_result_task:
   expected_output: >
     A list of games for {sport} with result
   agent: information_analyst_agent 
-  #output_file: output/output.json
+  output_file: output/output.json
 
 
 analyze_past_result_task:
