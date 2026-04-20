@@ -43,7 +43,7 @@ def get_api_data(session_year: str = datetime.datetime.now().year):
                                 }
                                 final_result.append(output_dict)
                         except:
-                                return final_result 
+                                return final_result
         print("=================== Tool Response: ========================")
         print(final_result)
         print("===========================================================")

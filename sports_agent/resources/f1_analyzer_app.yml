@@ -1,0 +1,12 @@
+resources:
+  apps:
+    f1-analyzer-app:
+      name: "f1-analyzer-app"
+      source_code_path: ../src/sports_agent
+      description: "A Streamlit app that uses a SQL warehouse"
+      resources:
+        - name: api-secret
+          secret:
+            key: OPENAI_API_KEY
+            permission: READ
+            scope: sports-agent
