@@ -7,8 +7,13 @@ resources:
   apps:
     f1-analyzer-app:
       name: "f1-analyzer-app"
-      source_code_path: /Workspace/Users/ayan.guha@versent.com.au/.bundle/${bundle.name}/${bundle.target}/files
-      description: "A Streamlit app that uses a SQL warehouse"
+      source_code_path: .
+      description: "A Streamlit app that uses crewai agent"
+      config:
+        command: ['streamlit', 'run', 'src/sports_agent/app.py']
+        env:
+          - name: OPENAI_API_KEY
+            value_from: OPENAI_API_KEY
       resources:
         - name: OPENAI_API_KEY
           secret:
@@ -25,11 +30,11 @@ targets:
     # See also https://docs.databricks.com/dev-tools/bundles/deployment-modes.html.
     mode: development
     default: true
-    workspace:
-      host: https://versent-data-practice.cloud.databricks.com
-      root_path: /Workspace/Users/ayan.guha@versent.com.au/.bundle/${bundle.name}/${bundle.target}
-    permissions:
-      - group_name: users
-        level: CAN_MANAGE
-      - user_name: ayan.guha@versent.com.au
-        level: CAN_MANAGE
+    #workspace:
+      #host: https://versent-data-practice.cloud.databricks.com
+      #root_path: /Workspace/Users/ayan.guha@versent.com.au/.bundle/${bundle.name}/${bundle.target}
+    #permissions:
+    #  - group_name: users
+    #    level: CAN_MANAGE
+    #  - user_name: ayan.guha@versent.com.au
+    #    level: CAN_MANAGE
