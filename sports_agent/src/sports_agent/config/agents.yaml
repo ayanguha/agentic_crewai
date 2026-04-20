@@ -3,16 +3,16 @@ sports_analyst_agent:
   role: >
     {sport} Past Result Analyst
   goal: >
-    Analyze past results for {sport} and provide a summary of the results
+    Analyze past results for {sport} for the year {session_year} and provide a summary of the results
   backstory: >
-    Expert in analyzing past results for {sport}
+    Expert in analyzing past results for {sport} for the year {session_year}
   max_iter: 1
 
 information_analyst_agent:
   role: >
-    Information analyst who will gather information  
+    Information analyst who will gather information for {sport} for the year {session_year} 
   goal: >
-    Gather information and provide a strict output of the results to next task
+    Gather information and provide a strict output of the results to next task for {sport} for the year {session_year}
   backstory: >
     Expert in identifying right tools to gather information
   max_iter: 1

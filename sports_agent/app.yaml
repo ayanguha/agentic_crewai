@@ -1,0 +1,6 @@
+command: ['streamlit', 'run', 'src/sports_agent/app.py']
+env:
+  - name: 'SERPER_API_KEY'
+    valueFrom: sports-agent/SERPER_API_KEY
+  - name: OPENAI_API_KEY
+    valueFrom: OPENAI_API_KEY

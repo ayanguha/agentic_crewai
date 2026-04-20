@@ -1,7 +1,7 @@
 from crewai import Agent, Crew 
 from crewai.project import CrewBase, agent, crew, task, after_kickoff, before_kickoff
 from crewai.agents.agent_builder.base_agent import BaseAgent
-from sports_agent.tools.custom_tool import PastResultTool
+from tools.custom_tool import PastResultTool
 from crewai import Task, Process
 from crewai import LLM
 from typing import List
@@ -29,7 +29,19 @@ class F1SessionResultList(BaseModel):
     """ List of F1 sessions with results  """
     sessions: List[F1Session] = Field(description="List of F1 Sessions with results")
 
-#llm = LLM(model="ollama/lfm2.5-thinking:latest",base_url="http://localhost:11434")
+
+
+import os 
+from dotenv import load_dotenv
+
+# Load variables from .env into the system environment
+
+if "DATABRICKS_APP_NAME" in os.environ:
+    print("============ This is Databricks Environment ============")
+    print(os.environ) 
+    print(f"OPENAI_API_KEY: {os.getenv('OPENAI_API_KEY')}")
+else:
+    load_dotenv()
 
 llm = LLM(model = "openai/gpt-4o")
 
