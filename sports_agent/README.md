@@ -18,9 +18,63 @@ Next, navigate to your project directory and install the dependencies:
 ```bash
 crewai install
 ```
-### Customizing
+
+### Local Development
 
 **Add your `OPENAI_API_KEY` into the `.env` file**
+
+### Databricks deployment 
+
+#### Get the key from `.env`
+```
+grep '^OPENAI_API_KEY=' .env | sed 's/^OPENAI_API_KEY=//'
+```
+
+#### Databricks CLI for Scope and Secret Management
+
+```
+databricks secrets create-scope f1_analyzer_scope
+
+```
+
+```
+openai_api_key=$(grep '^OPENAI_API_KEY=' .env | sed 's/^OPENAI_API_KEY=//')
+
+databricks secrets put-secret --json '{
+  "scope": "f1_analyzer_scope",
+  "key": "OPENAI_API_KEY",
+  "string_value": "'"$openai_api_key"'"
+}'
+```
+
+#### DAB deployment
+
+This is essential to have App created with Resources. 
+
+```
+databricks bundle deploy --profile dbrx-free
+
+```
+
+#### App deployment
+
+```
+databricks apps start  f1-analyzer-app
+
+databricks sync . /Workspace/Users/guha.ayan@gmail.com/.bundle/f1_analyzer/dev/files
+
+databricks apps deploy f1-analyzer-app --source-code-path /Workspace/Users/guha.ayan@gmail.com/.bundle/f1_analyzer/dev/files
+
+
+```
+
+Start the app
+
+```
+databricks apps start f1-analyzer-app
+```
+
+### Customizing
 
 - Modify `src/sports_agent/config/agents.yaml` to define your agents
 - Modify `src/sports_agent/config/tasks.yaml` to define your tasks
@@ -43,12 +97,3 @@ This example, unmodified, will run the create a `report.md` file with the output
 
 The sports-agent Crew is composed of multiple AI agents, each with unique roles, goals, and tools. These agents collaborate on a series of tasks, defined in `config/tasks.yaml`, leveraging their collective skills to achieve complex objectives. The `config/agents.yaml` file outlines the capabilities and configurations of each agent in your crew.
 
-## Support
-
-For support, questions, or feedback regarding the SportsAgent Crew or crewAI.
-- Visit our [documentation](https://docs.crewai.com)
-- Reach out to us through our [GitHub repository](https://github.com/joaomdmoura/crewai)
-- [Join our Discord](https://discord.com/invite/X4JWnZnxPb)
-- [Chat with our docs](https://chatg.pt/DWjSBZn)
-
-Let's create wonders together with the power and simplicity of crewAI.

@@ -19,7 +19,7 @@ def run_crew(inputs):
 with st.sidebar:
     st.write("Enter the sport you want to analyze:")
     sport = st.selectbox("Sport", ["F1"])
-    session_year = st.pills("Year", ['2026', '2025', '2024'], selection_mode="single")
+    session_year = st.pills("Year", ['2025', '2024', '2023'], selection_mode="single")
     st.write(f"sport: {sport}, session_year: {session_year} ")
     inputs = {
         'sport': sport, 'session_year': session_year

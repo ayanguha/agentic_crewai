@@ -69,7 +69,6 @@ class SportsAgent():
         return Agent(
             config=self.agents_config['information_analyst_agent'],
             tools=[ PastResultTool(), 
-                  #SerperDevTool()
                   ], 
             verbose=True, llm=llm 
         )

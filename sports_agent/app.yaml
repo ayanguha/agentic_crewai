@@ -1,6 +1,9 @@
+name: f1_analyzer
 command: ['streamlit', 'run', 'src/sports_agent/app.py']
+resources:
+  - name: "my_sql_warehouse"
+    resource_type: "sql-warehouse"
+    id: "12345abcde6789f"
 env:
-  - name: 'SERPER_API_KEY'
-    valueFrom: sports-agent/SERPER_API_KEY
   - name: OPENAI_API_KEY
     valueFrom: OPENAI_API_KEY
